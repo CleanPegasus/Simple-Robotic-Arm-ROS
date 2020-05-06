@@ -1,0 +1,2 @@
+ros_basics:simple_arm
+-DCATKIN_DEVEL_PREFIX=/home/cleanpegasus/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/cleanpegasus/catkin_ws/install -G Unix Makefiles
