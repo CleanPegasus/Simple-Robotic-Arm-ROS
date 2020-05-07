@@ -53,3 +53,19 @@ bool handle_safe_move_request(simple_arm::GoToPosition::Requests& req,
 
     return true;
 }
+
+int main(int argc, char** argv)
+{
+    ros::init(argc, argv, "arm_mover");
+    ros::NodeHandle n;
+
+    joint1_pub = n.advertise<std_msgs::Float64>("/simple_arm/joint_1_position_controller/command", 10);
+    joint2_pub = n.advertise<std_msgs::Float64>("/simple_arm/joint_2_position_controller/command", 10);
+
+    ros::ServiceServer service = n.advertiseService("/arm_mover/safe_move", handle_safe_move_request);
+    ROS_INFO("Ready to send joint commands");
+
+    ros::spin();
+
+    return 0;
+}
